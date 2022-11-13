@@ -9,8 +9,8 @@ class Name extends React.Component {
 
     // ***
 
-    // assign number 
-    const scrambleNum = Math.floor(Math.random() * (10 - 1 + 1)) + 1
+    // assign number
+    let scrambleNum = Math.floor(Math.random() * (10 - 1 + 1)) + 1
     this.setState({ scrambleNum })
 
     // testing splitting and converting to numbers in one
@@ -20,14 +20,22 @@ class Name extends React.Component {
     
     let scrambledName = this.props.name.split('').map(letterToNum)
 
-    // add or minus scramble number to number form of name
-      // get ascii code of number
-      // check if is between 91 - 97
-      // change scramble number
-      // record ACTUAL scramble number for decoding
+    // apply scramble number
+    const applyScrambleNum = (num) => {
+      num += scrambleNum
+
+      if (num < 27) {
+        return num
+      } else {
+        return num + 6
+      }
+    }
+
+    scrambledName = scrambledName.map(applyScrambleNum)
 
     // convert back into letters
     scrambledName = scrambledName.map(number => String.fromCharCode(number + 64))
+    
 
     this.setState({ scrambledName })
     // ***
@@ -38,9 +46,7 @@ class Name extends React.Component {
   }
 
   state = {
-    isScrambledVisible: false,
-    scrambledName: '',
-    scrambleNum: 0
+    isScrambledVisible: false
   }
 
   handleClick = () => {
