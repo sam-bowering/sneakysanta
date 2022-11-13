@@ -21,7 +21,8 @@ class Calculator extends React.Component {
 
   handleEnterSubmit = (e) => {
     if (e.keyCode === 13) {
-      // this.handleSubmitName
+      // FIGURE OUT HOW TO NOT REPEAT CODE
+      // vvv Same function as handleSubmitName vvv
       const names = this.state.names
       names.push(this.state.inputName)
       this.setState({ names, inputName: '' })
