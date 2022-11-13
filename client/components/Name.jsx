@@ -13,16 +13,18 @@ class Name extends React.Component {
     const scrambleNum = Math.floor(Math.random() * (10 - 1 + 1)) + 1
     this.setState({ scrambleNum })
 
-    // letters to numbers
-    const lettersToNum = (letter) => {
+    // testing splitting and converting to numbers in one
+    const letterToNum = (letter) => {
       return parseInt(letter, 36) - 9
     }
     
-    // testing splitting and converting to numbers in one
-    let scrambledName = this.props.name.split('').map(lettersToNum)
+    let scrambledName = this.props.name.split('').map(letterToNum)
 
-    // add scramble number to number form of name
-    scrambledName = scrambledName.map(number => number += scrambleNum)
+    // add or minus scramble number to number form of name
+      // get ascii code of number
+      // check if is between 91 - 97
+      // change scramble number
+      // record ACTUAL scramble number for decoding
 
     // convert back into letters
     scrambledName = scrambledName.map(number => String.fromCharCode(number + 64))
