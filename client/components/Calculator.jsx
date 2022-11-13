@@ -19,12 +19,17 @@ class Calculator extends React.Component {
     this.setState({ names, inputName: '' })
   }
 
+  handleReset = () => {
+    this.setState({ names: [] })
+  }
+
   render () {
     return (
       <div className='calculator'>
         <Form>
           <Form.Input name='inputName' value={this.state.submittedname} onChange={this.handleChange}></Form.Input>
           <Button type='button' onClick={this.handleSubmitName}>Add</Button>
+          <Button type='button' onClick={this.handleReset}>Reset</Button>
         </Form>
         <List names={ this.state.names }/>
       </div>
