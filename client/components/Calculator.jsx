@@ -19,6 +19,15 @@ class Calculator extends React.Component {
     this.setState({ names, inputName: '' })
   }
 
+  handleEnterSubmit = (e) => {
+    if (e.keyCode === 13) {
+      // this.handleSubmitName
+      const names = this.state.names
+      names.push(this.state.inputName)
+      this.setState({ names, inputName: '' })
+    }
+  }
+
   handleReset = () => {
     this.setState({ names: [] })
   }
@@ -27,7 +36,7 @@ class Calculator extends React.Component {
     return (
       <div className='calculator'>
         <Form>
-          <Form.Input name='inputName' value={this.state.submittedname} onChange={this.handleChange}></Form.Input>
+          <Form.Input name='inputName' value={this.state.inputName} onChange={this.handleChange} onKeyDown={this.handleEnterSubmit}></Form.Input>
           <Button type='button' onClick={this.handleSubmitName}>Add</Button>
           <Button type='button' onClick={this.handleReset}>Reset</Button>
         </Form>
