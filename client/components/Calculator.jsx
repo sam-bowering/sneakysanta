@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Form, Button } from 'semantic-ui-react'
 
+import List from './List'
+
 class Calculator extends React.Component {
   state = {
     names: []
@@ -24,6 +26,7 @@ class Calculator extends React.Component {
           <Form.Input name='inputName' value={this.state.submittedname} onChange={this.handleChange}></Form.Input>
           <Button type='button' onClick={this.handleSubmitName}>Add</Button>
         </Form>
+        <List names={ this.state.names }/>
       </div>
     )
   }
