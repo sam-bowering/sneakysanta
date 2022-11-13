@@ -11,12 +11,10 @@ class Calculator extends React.Component {
     this.setState({ [e.target.name]: e.target.value})
   }
 
-  handleSubmitName = (state) => {
-    // store, set, apply
-    const { names, inputName } = state
-    const updatedNames = [...names]
-    updatedNames.push(inputName)
-    this.setState({ names: updatedNames})
+  handleSubmitName = () => {
+    const names = this.state.names
+    names.push(this.state.inputName)
+    this.setState({ names, inputName: '' })
   }
 
   render () {
@@ -24,7 +22,7 @@ class Calculator extends React.Component {
       <div className='calculator'>
         <Form>
           <Form.Input name='inputName' value={this.state.submittedname} onChange={this.handleChange}></Form.Input>
-          <Button type='button' onClick={() => this.handleSubmitName(this.state)}>Add</Button>
+          <Button type='button' onClick={this.handleSubmitName}>Add</Button>
         </Form>
       </div>
     )
